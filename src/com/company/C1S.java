@@ -4,10 +4,8 @@ public class C1S {
 
     static boolean esDivisible(int n, int divisor){
         if ((n % divisor) == 0) {
-            System.out.println("TRUE.");
             return true;
         } else {
-            System.out.println("FALSE.");
             return false;
         }
     }
