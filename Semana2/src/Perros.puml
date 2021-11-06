@@ -1,0 +1,8 @@
+@startuml
+
+class Perros{
+ - hola : Double
+ - Nombre: String
+}
+
+@enduml

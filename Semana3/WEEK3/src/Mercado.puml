@@ -1,0 +1,23 @@
+@startuml
+class Cliente{
+  - nombre: String
+  - telefono: String
+  - domicilio: String
+  + Cliente(nombre: String, telefono: String, domicilio: String)
+  }
+
+class Pedido{
+  - fecha: Date
+  - codigo: int
+  + Pedido(fecha: Date, codigo: int)
+  }
+
+class Articulo{
+  - nombre: String
+  - precio: float
+  + Articulo(nombre: String, precio: float)
+  }
+
+ Pedido "0..n" *-- "1" Cliente: - cliente
+ Articulo "1..n" --*  "0..n" Pedido: - articulos
+@enduml

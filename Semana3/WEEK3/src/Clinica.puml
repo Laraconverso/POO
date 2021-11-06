@@ -1,0 +1,44 @@
+@startuml
+class Paciente{
+   - numeroDeDocumentos: String
+   - nombre: Srting
+   - edad: int
+   - nombreDeObraSocial: String
+   - particular: boolean
+   - medicoEspecialista: Medico
+   - cantidadDeEstudios: int
+   - cirugia: boolean
+   - alta: boolean
+}
+package Medicos{
+class Medico{
+    - numeroDeMatricula: String
+    - nombre: String
+    # importeBasico: double
+
+    + cobrar(): double
+}
+
+class Cardiologo{
+    + cobrar(): double
+}
+
+class Cirujano{
+    + cobrar(): double
+}
+
+class Dermatologo{
+    + cobrar(): double
+}
+
+class Generalista{
+    + cobrar(): double
+}
+}
+Paciente *-right- Medico: - medicoEspacialista
+Cardiologo --|> Medico
+Cirujano --|> Medico
+Dermatologo --|> Medico
+Generalista --|> Medico
+
+@enduml

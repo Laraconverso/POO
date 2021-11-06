@@ -1,0 +1,24 @@
+@startuml
+
+package PersonasQueAsistenALaInstitucion{
+
+class Profesores{
+    - legajo: int
+    - antiguedadLaboral : int
+    - titulo: String
+    + DarClases(): Boolean
+}
+
+class Estudiantes{
+    - legajo: int
+    + Estudian(): Boolean
+}
+
+class PersonalAdmin{
+    - legajo: int
+    - cargo: String
+    + ActividadesAdin(): Boolean
+}
+}
+@enduml
+
