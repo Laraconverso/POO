@@ -1,0 +1,9 @@
+@startuml
+
+class Contenedor{
+   - identificador: int
+   - descripcion: String
+
+}
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml
+
+abstract class Arma {
+- cantMunicion : int
+- alcanceMts : int
+- marca : String
+- calibre : int
+- estado : String
+- policiaDuenio : Policia
++ {abstract}estaEnCondiciones() : boolean
+}
+
+class ArmaCorta {
+   - automatica: boolean
+   + tieneAlcanceMedio() : boolean
+   +estaEnCondiciones() : boolean
+}
+
+class ArmaLarga {
+- selloRenar : boolean
+- descripcionJustificacion : String
+- nivel : int
++ compareTo(o : Object): int
++estaEnCondiciones() : boolean
+
+}
+class Policia {
+- nombre : String
+- apellido : String
+- legajo : String
++ Policia(nombre: String, apellido : String , legajo : String)
+}
+
+interface Comparable{
+   + compareTo(o : Object): int
+}
+
+Arma <|-- ArmaCorta
+Comparable <|.. ArmaLarga
+Arma <|--  ArmaLarga
+Policia --o Arma
+
+@enduml

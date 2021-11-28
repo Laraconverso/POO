@@ -1,0 +1,9 @@
+@startuml
+class Embarcacion{
+    Capitan capitan;
+
+}
+
+
+class Capitan
+@enduml

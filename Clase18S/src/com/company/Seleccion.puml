@@ -1,0 +1,21 @@
+@startuml
+class Jugador {
+    -posicion:String
+    -apellido:String
+    -numeroCamiseta: String
+    -convocatoria: String
+
+    +Jugador(posicion:String, apellido: String, numeroCamiseta:String)
+    + setConvocatoria(convocatoria: String): void
+
+}
+
+
+class Plantel{
+    +obtenerReservas():List<Jugador>
+    + cantidad(posicion: String): int
+}
+
+Plantel -->"*" Jugador: -jugadores
+
+@enduml

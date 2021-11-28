@@ -1,3 +1,4 @@
+//Sofia Fraga, carlos artunduaga, ?, Lara Converso
 public class CuentaComitente extends Cuenta{
     private String claveCNV;
 
@@ -18,7 +19,7 @@ public class CuentaComitente extends Cuenta{
     @Override
     public void extraer(double monto, String clave) {
         if(clave.equals(this.claveCNV)){
-            setSaldo();
+            this.setSaldo(super.saldo+1);
         }
     }
 
