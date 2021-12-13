@@ -1,0 +1,14 @@
+@startuml
+
+class Pizaa{
+}
+
+class Simples{
+ -
+}
+
+class Combinadas{
+
+}
+
+@enduml

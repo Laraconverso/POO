@@ -1,0 +1,50 @@
+@startuml
+
+class Administracion{
+    + agregarUnidadFuncional(codigo: String, direccion: String, nombreDuenio: String, mtsTotales: double, impuesto: double): void
+    + mostrarUnidadFuncional(): void
+}
+
+class UnidadFuncionalFactory{
+    + {static}{final} CODIGO_GARAGE = "COCH"
+    + {static}{final} CODIGO_LOCAL = "LOCAL"
+    + {static}{final} CODIGO_SHOPPING = "SHOP"
+    + {static}{final} CODIG_DEPARTAMENTO = "DEPTO"
+    + {static} crear(codigo: String, direccion: String, nombreDuenio: String, mtsTotales: double, impuesto: double) : UnidadFuncional
+}
+
+abstract UnidadFuncional{
+    - direccion: String
+    - nombreDuenio: String
+    - mtsTotales: double
+    - impuesto: double
+    + {abstract} calcularPrecio() : double
+    + {override} toString(): String
+}
+
+class Garage{
+    + {override}calcularPrecio() : double
+}
+
+class Local{
+    + {override}calcularPrecio() : double
+}
+
+class Departamento{
+    + {override}calcularPrecio() : double
+}
+
+class Shopping{
+    + Shopping(direccion:String, nombreDuenio:String, mtsTotales:double, impuesto: double) : Shopping
+    + {override}calcularPrecio() : double
+}
+
+Administracion *-- "*" UnidadFuncional
+Administracion .left.> UnidadFuncionalFactory
+Local -up-|> UnidadFuncional
+Garage -up-|> UnidadFuncional
+Departamento -up-|> UnidadFuncional
+Shopping -up-|> UnidadFuncional
+Shopping o-right- "*" Local: - shops
+
+@enduml

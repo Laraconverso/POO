@@ -1,0 +1,32 @@
+@startuml
+
+class Trencito {
+    + agregarForma(forma: Medible): void
+    + calcularAreaTotal(): double
+}
+
+class Rectangulo {
+    - alto: double
+    - largo: double
+    + calcularAreaTotal(): double
+    + Rectangulo(
+}
+
+class Combo {
+    - precioTotal: double
+    + Combo(productos: List<Producto>, descuento: double): Combo
+    + calcularPrecioTotal(): double
+}
+
+interface Presupuestable {
+    + {abstract} calcularPrecioTotal(): double
+}
+
+Carrito --> "*" Presupuestable : - productos
+Combo --> "*" Producto : - productos
+Combo .up.|> Presupuestable
+Producto .up.|> Presupuestable
+
+
+
+@enduml
