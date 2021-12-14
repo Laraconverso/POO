@@ -1,0 +1,39 @@
+@startuml
+
+class Barco{
+    - cargas : List<Carga>;
+    + mostrarCargasSimples(): String
+    + agregarCargas(carga: Carga): void
+}
+
+class FactoryCarga{
+    + {static}crearCargaSimple(nombre: String, peso: double, codigo: String) CargaSimple
+    + {static}crearContenedor(nombre: String , peso: double, cargasSimples: List<CargaSimple> ) Contenedor
+}
+
+abstract Carga{
+    - nombre: String
+    - peso: double
+    + {abstract}calcularPesoCarga: double
+    + getNombre(): String
+    + getPeso(): double
+}
+
+class CargaSimple{
+    - pesoDeCarga: double
+    + {override}calcularPesoCarga: double
+    + {override} toString: String
+    + cargaSimple(nombre: String,peso: double, codigo: String)
+}
+
+class Contenedor{
+    + {override}calcularPesoCarga: double
+    + {override} toString: String
+    + Contenedor(nombre: String , peso: double, cargasSimples: List<CargaSimple> )
+}
+
+Barco --> "*" Carga: -cargas
+CargaSimple --> "*" Contenedor: -cargasSimples
+CargaSimple -up-|> Carga
+Contenedor -up-|> Carga
+@enduml

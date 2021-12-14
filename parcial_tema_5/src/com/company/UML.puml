@@ -1,0 +1,33 @@
+@startuml
+class Municipalidad{
+    + mostrarPropiedades(): String
+}
+
+class PropiedadFactory{
+    + crearPropiedad(calle: String, numero: int, precio: double) : Propiedad
+}
+
+abstract Propiedad{
+    - numero: int
+    - calle: String
+    + {abstract}calcularPrecio(): double
+}
+
+class Casa{
+    - montoBaseImpuesto : double
+    + {override}calcularPrecio(): double
+    + {override}toString(): String
+}
+
+class BarrioCerrado{
+    - factorMultiplicador: int
+    + {override}calcularPrecio(): double
+    + {override}toString(): String
+}
+
+BarrioCerrado --> "*" Casa: -casas
+Municipalidad --> "*" Propiedad: -propiedades
+Casa -up-|> Propiedad
+BarrioCerrado -up-|> Propiedad
+
+@enduml

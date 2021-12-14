@@ -9,7 +9,7 @@ class FactoryOfertasAcademicas{
     + crearPrograma(nombre: String, descripcion: String, bonificacion: double,
 }
 
-class OfertaAcademica{
+abstract OfertaAcademica{
     - nombre: String
     - descripcion: String
     + {abstract} calcularPrecio(): double
