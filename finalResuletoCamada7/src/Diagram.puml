@@ -1,0 +1,40 @@
+@startuml
+
+class CargoShip {
+    + addPayload(payload: Payload): void
+    + showPayloads(): void
+}
+
+class PayloadFactory {
+    + {static} SLOW_PAYLOAD_CODE = "SLW-123"
+    + {static} FAST_PAYLOAD_CODE = "FST-456"
+    + {static} SLOW_PAYLOAD_VARIANCE = 10
+    + {static} FAST_PAYLOAD_VARIANCE = 10
+    + createSimplePayload(name: String, weight: double, code: String): Payload
+    + createContainerPayload(name: String, Set<SimplePayload> payloads): Payload
+}
+
+abstract Payload {
+    - name: String
+    + {override} toString(): String
+    + {abstract} calculateWeight(): double
+}
+
+class SimplePayload {
+    - weight: double
+    + SimplePayload(name: String, weight: double)
+    + calculateWeight(): double
+}
+
+class ContainerPayload {
+    + {static} BASE_WEIGHT_CONTAINER = 100
+    + calculateWeight(): double
+}
+
+CargoShip *-right- "*" Payload : - payloads
+SimplePayload -up-|> Payload
+ContainerPayload -up-|> Payload
+ContainerPayload o-- "*" SimplePayload: - payloads
+CargoShip .down.> PayloadFactory
+
+@enduml
